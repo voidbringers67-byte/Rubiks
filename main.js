@@ -1,5 +1,7 @@
-import * as THREE from 'https://cdn.skypack.dev/three@0.150.1';
-import { OrbitControls } from 'https://cdn.skypack.dev/three@0.150.1/examples/jsm/controls/OrbitControls.js';
+import * as THREE from 'https://esm.sh/three@0.150.1';
+import { OrbitControls } from 'https://esm.sh/three@0.150.1/examples/jsm/controls/OrbitControls.js';
+
+console.log("Three.js is attempting to load...");
 
 // 1. Scene Setup
 const scene = new THREE.Scene();
