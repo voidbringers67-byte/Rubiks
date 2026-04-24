@@ -1,5 +1,7 @@
 // Import from the file you just created in your own repo
 import * as THREE from './three.js';
+// Import OrbitControls from a reliable CDN
+import { OrbitControls } from 'https://unpkg.com/three@0.150.1/examples/jsm/controls/OrbitControls.js';
 
 console.log("Three.js is loading from my own repository!");
 
@@ -53,7 +55,10 @@ for (let x = -1; x <= 1; x++) {
 camera.position.z = 6;
 
 // 4. Interactivity (Allows you to drag and rotate the view)
+// Add a check to make sure OrbitControls is loaded
 const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; // Makes the movement feel "smooth"
+
 
 // 5. Animation Loop
 function animate() {
