@@ -1,4 +1,4 @@
-import * as THREE from 'https://esm.sh/three@0.150.1';
+
 import { OrbitControls } from 'https://esm.sh/three@0.150.1/examples/jsm/controls/OrbitControls.js';
 // Import from the file you just created in your own repo
 import * as THREE from './three.js';
