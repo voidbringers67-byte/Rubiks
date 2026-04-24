@@ -5,6 +5,7 @@ console.log("Three.js is loading from my own repository!");
 
 // 1. Scene Setup
 const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x9bf7fa);
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -21,19 +22,28 @@ scene.add(pointLight);
 const cubies = [];
 const spacing = 1.05; // Slightly larger than 1 to see the gaps between cubies
 
+// Define the 6 Rubik's colors
+const colors = [
+    0xffffff, // Right (White)
+    0xffff00, // Left (Yellow)
+    0xff0000, // Top (Red)
+    0xffa500, // Bottom (Orange)
+    0x0000ff, // Front (Blue)
+    0x008000  // Back (Green)
+];
+
+// Create an array of 6 materials
+const faceMaterials = colors.map(color => new THREE.MeshPhongMaterial({ color }));
+
 for (let x = -1; x <= 1; x++) {
     for (let y = -1; y <= 1; y++) {
         for (let z = -1; z <= 1; z++) {
-            const geometry = new THREE.BoxGeometry(1, 1, 1);
+            const geometry = new THREE.BoxGeometry(0.95, 0.95, 0.95); // Slightly smaller for gaps
             
-            // MeshNormalMaterial gives each side a different color automatically
-            const material = new THREE.MeshNormalMaterial(); 
+            // Apply the 6 materials to the cube
+            const cubie = new THREE.Mesh(geometry, faceMaterials);
             
-            const cubie = new THREE.Mesh(geometry, material);
-            
-            // Position the cubie in the 3D grid
             cubie.position.set(x * spacing, y * spacing, z * spacing);
-            
             scene.add(cubie);
             cubies.push(cubie);
         }
